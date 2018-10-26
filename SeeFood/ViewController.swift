@@ -52,6 +52,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let result = req.results as? [VNClassificationObservation] else { fatalError( "Convert results failed" ) }
             
             print(result)
+            if let firstResult = result.first {
+                if firstResult.identifier.contains("hotdog") {
+                    self.navigationItem.title = "Hot Dog!"
+                    
+                } else {
+                    self.navigationItem.title = "Not Hot Dog!"
+                }
+            }
         }
         
         let handler = VNImageRequestHandler(ciImage: image )
